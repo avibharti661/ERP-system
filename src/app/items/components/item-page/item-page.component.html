@@ -1,0 +1,54 @@
+<app-base-page
+  [saveButtonDisabled]="vm.form?.invalid"
+  (save)="vm.save()">
+  <span title>{{ 'items.item-page' | translate }}</span>
+  <span sub-title>{{ vm.subTitle$ | async }}</span>
+  <form [formGroup]="vm.form">
+    <mat-grid-list [cols]="vm.isMobile ? 1 : 4" rowHeight="64px">
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'items.caption.name' | translate" formControlName="name" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'items.caption.code' | translate" formControlName="code" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'items.caption.bar-code' | translate" formControlName="barCode" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <app-drop-down-control formControlName="type" propertyName="type"></app-drop-down-control>
+      </mat-grid-tile>
+      
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'items.caption.price' | translate" formControlName="price" type="number" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <app-lookup-control formControlName="contractor" propertyName="contractor"></app-lookup-control>
+      </mat-grid-tile>
+  
+      <mat-grid-tile [colspan]="vm.isMobile ? 1 : 2">
+        <mat-form-field style="width: 100%; padding: 3px 0 3px 0">
+          <input matInput [placeholder]="'items.caption.description' | translate" formControlName="description" />
+        </mat-form-field>
+      </mat-grid-tile>
+      
+
+    </mat-grid-list>
+
+    <mat-accordion>
+      <app-item-features [formArray]="vm.form.get('features')"></app-item-features>
+    </mat-accordion>
+  </form>
+</app-base-page>

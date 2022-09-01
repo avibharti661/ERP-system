@@ -1,0 +1,52 @@
+<app-base-page
+  [saveButtonHidden]="true">
+  <span title>{{ 'transactions.transaction--page' | translate }}</span>
+  <span sub-title>{{ vm.subTitle$ | async }}</span>
+  <form [formGroup]="vm.form">
+    <mat-grid-list [cols]="vm.isMobile ? 1 : 2" rowHeight="64px">
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'transactions.caption.type' | translate" formControlName="type" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'transactions.caption.status' | translate" formControlName="status" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'transactions.caption.from' | translate" formControlName="from" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'transactions.caption.to' | translate" formControlName="to" />
+        </mat-form-field>
+      </mat-grid-tile>
+      
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'transactions.caption.order' | translate" formControlName="order" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'transactions.caption.date' | translate" formControlName="date" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'transactions.caption.quantity' | translate" formControlName="qty" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </form>
+</app-base-page>

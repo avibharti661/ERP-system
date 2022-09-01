@@ -1,0 +1,43 @@
+<app-base-page
+  [saveButtonDisabled]="!vm.saveButtonEnabled"
+  (save)="vm.save()">
+  <span title>{{ 'orders.order-page' | translate }}</span>
+  <span sub-title>{{ vm.subTitle$ | async }}</span>
+  <form [formGroup]="vm.form">
+    <mat-grid-list [cols]="vm.isMobile ? 1 : 3" rowHeight="64px">
+
+      <mat-grid-tile>
+        <app-drop-down-control formControlName="type" propertyName="type"></app-drop-down-control>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'orders.caption.number' | translate" formControlName="number" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput [placeholder]="'orders.caption.quantity' | translate" formControlName="qty" type="number" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <app-lookup-control formControlName="customer" propertyName="customer"></app-lookup-control>
+      </mat-grid-tile>
+      
+      <mat-grid-tile>
+        <app-lookup-control formControlName="item" propertyName="item"></app-lookup-control>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <app-lookup-control formControlName="store" propertyName="store"></app-lookup-control>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+
+    <mat-accordion>
+      <app-order-features [formArray]="vm.form.get('features')"></app-order-features>
+    </mat-accordion>
+  </form>
+</app-base-page>

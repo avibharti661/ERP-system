@@ -1,0 +1,46 @@
+<app-base-page
+  [saveButtonDisabled]="vm.form?.invalid"
+  (save)="vm.save()">
+  <span title>{{ 'stores.store-page' | translate }}</span>
+  <span sub-title>{{ vm.subTitle$ | async }}</span>
+  <form [formGroup]="vm.form">
+    <mat-grid-list [cols]="vm.isMobile ? 1 : 4" rowHeight="64px">
+
+      <mat-grid-tile [colspan]="vm.isMobile ? 1 : 2">
+        <mat-form-field>
+          <input matInput [placeholder]="'stores.caption.name' | translate" formControlName="name" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="vm.isMobile ? 1 : 2">
+        <mat-form-field>
+          <input matInput [placeholder]="'stores.caption.code' | translate" formControlName="code" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="vm.isMobile ? 1 : 2">
+        <app-drop-down-control formControlName="type" propertyName="type"></app-drop-down-control>
+      </mat-grid-tile>
+
+      <!-- <mat-grid-tile [colspan]="vm.isMobile ? 1 : 2">
+        <mat-form-field>
+          <input matInput [placeholder]="'stores.caption.status' | translate" formControlName="status" />
+        </mat-form-field>
+      </mat-grid-tile> -->
+      
+      <mat-grid-tile colspan="1">
+        <mat-form-field>
+          <input matInput [placeholder]="'stores.caption.phone' | translate" formControlName="phone" />
+        </mat-form-field>
+      </mat-grid-tile>
+  
+      <mat-grid-tile [colspan]="vm.isMobile ? 1 : 3">
+        <mat-form-field style="width: 100%; padding: 3px 0 3px 0">
+          <input matInput [placeholder]="'stores.caption.address' | translate" formControlName="address" />
+        </mat-form-field>
+      </mat-grid-tile>
+      
+
+    </mat-grid-list>
+  </form>
+</app-base-page>
